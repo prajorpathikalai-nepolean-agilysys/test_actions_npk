@@ -1,0 +1,11 @@
+name: build
+
+on: push
+
+jobs:
+  check_git_version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check Git Version
+      run: git --version
