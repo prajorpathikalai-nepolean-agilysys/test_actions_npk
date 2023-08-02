@@ -3,9 +3,24 @@ name: build
 on: push
 
 jobs:
-  check_git_version:
+  check_git-version:
     runs-on: ubuntu-latest
 
     steps:
     - name: Check Git Version
       run: git --version
+  clone_repositories:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout stay-versions-files
+        uses: actions/checkout@v3
+        with:
+           repository: Agilysys-Inc/stay-versions-files
+           ref: main
+           token: ${{ secrets.MY_SECRET }}
+      - name: Clone stay-rgui
+        uses: actions/checkout@v3
+        with:
+          repository: Agilysys-Inc/stay-rgui
+          ref: main
+          token: ${{ secrets.MY_SECRET }}
